@@ -1,12 +1,16 @@
 :root {
-    --primary-color: #d9232d; /* Intense Action Red */
-    --primary-hover: #b81b25;
-    --bg-base: #0a0a0c;
-    --bg-surface: #141419;
-    --text-primary: #ffffff;
-    --text-muted: #8e8e9e;
-    --border-accent: #2c2c36;
-    --gradient-glow: linear-gradient(135deg, var(--primary-color) 0%, #ff4d4d 100%);
+    --primary-color: #c5a059; /* Premium Gold from Logo */
+    --primary-hover: #e2c275;
+    --secondary-color: #3a7ca5; /* Strategic Teal from Logo */
+    --accent-glow: rgba(197, 160, 89, 0.3);
+    --bg-base: #0a0c10;
+    --bg-surface: #13171f;
+    --text-primary: #f0f0f5;
+    --text-muted: #9ba3af;
+    --border-accent: #21262d;
+    --gradient-gold: linear-gradient(135deg, #c5a059, #8e6f3e);
+    --gradient-teal: linear-gradient(135deg, #3a7ca5, #1d3e53);
+    --glass: rgba(13, 17, 23, 0.8);
 }
 
 * {
@@ -47,51 +51,102 @@ a:hover {
 }
 
 /* BUTTONS */
+/* NAVIGATION */
+.site-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-accent);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
 .btn {
     display: inline-block;
     padding: 0.8rem 1.8rem;
     font-weight: 700;
-    font-family: 'Outfit', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid transparent;
     text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
 }
 
 .btn-primary {
-    background: var(--gradient-glow);
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(217, 35, 45, 0.3);
+    background: var(--gradient-gold);
+    color: #000;
 }
-
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(217, 35, 45, 0.5);
-    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--accent-glow);
+    filter: brightness(1.1);
 }
 
 .btn-secondary {
-    background-color: #fff;
-    color: #000;
+    background: var(--gradient-teal);
+    color: #fff;
 }
-
 .btn-secondary:hover {
-    background-color: #e5e5e5;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(58, 124, 165, 0.3);
 }
 
 .btn-ghost {
     background: transparent;
-    border-color: #fff;
     color: #fff;
+    border: 1px solid var(--border-accent);
 }
-
 .btn-ghost:hover {
-    background: #fff;
-    color: #000;
+    background: rgba(255,255,255,0.05);
+    border-color: var(--primary-color);
 }
 
 .btn-block {
@@ -102,16 +157,17 @@ a:hover {
 /* HERO */
 .hero {
     position: relative;
-    padding: 6rem 2rem;
-    background: url('https://via.placeholder.com/1920x800/111/333?text=Intense+Gym+Background') center/cover no-repeat;
+    padding: 10rem 2rem 8rem;
+    background: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.9)), url('logo.png') center/cover no-repeat;
     text-align: center;
-    border-bottom: 1px solid var(--border-accent);
+    border-bottom: 4px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(10,10,12,0.8), rgba(10,10,12,0.95));
+    display: none;
 }
 
 .hero-content {
@@ -270,7 +326,7 @@ a:hover {
 }
 
 .lead-capture-box h3 {
-    color: #ff3b3b;
+    color: var(--primary-color);
     font-size: 1.5rem;
 }
 
