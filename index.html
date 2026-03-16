@@ -134,11 +134,11 @@
     <!-- VIDEO SECTION: VISUAL PROOF -->
     <section class="video-section">
         <div class="container">
-            <h2 class="section-title">Visual Protocol</h2>
+            <h2 class="section-title">Operational Protocol</h2>
             <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/76979871?h=8272103f6e&badge=0&autopause=0&player_id=0&app_id=58479" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Sportlander Experience"></iframe>
+                <iframe src="https://www.youtube.com/embed/45HbotO4VZM?autoplay=1&mute=1&loop=1&playlist=45HbotO4VZM&controls=0&modestbranding=1" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Sportlander Experience"></iframe>
             </div>
-            <p class="section-subtitle">Experience the standard of Sportlander West Bakersfield.</p>
+            <p class="section-subtitle">The Sportlander West Standard: Real Athletes. Real Results.</p>
         </div>
     </section>
 
@@ -173,6 +173,16 @@
                         <h2>The Anabolic Command Center</h2>
                         <h3>Bakersfield's Premier Post-Workout Juice Bar</h3>
                         <p>Recovery is where the battle is won. Our in-store Juice Bar at Sportlander West provides macro-designed protein shakes and fresh blends. No guesswork. Just raw, effective nutrition delivered precisely when your body is most primed for absorption.</p>
+                        
+                        <div class="featured-blends">
+                            <div class="blend-tag">★ Featured Blends</div>
+                            <ul class="blend-list">
+                                <li><strong>The Westside Bulk:</strong> 50g Whey + Creatine + Oats</li>
+                                <li><strong>Pre-DMV Shred:</strong> L-Carnitine + Green Tea + B-Vitamins</li>
+                                <li><strong>Southwest Recovery:</strong> BCAAs + Glucosamine + Electrolytes</li>
+                            </ul>
+                        </div>
+
                         <div class="juice-cta">
                             <a href="#map" class="btn btn-secondary">Visit the Bar</a>
                         </div>
@@ -182,9 +192,16 @@
                     </div>
                 </section>
 
-                <section>
-                    <h2>Elite Brand Selection</h2>
-                    <p>We reject the filler. We stock only the most dominant names in the industry: <strong>Ghost, SciLabs, Podium, Mad Supps, and Rawkem</strong>. If it's on our shelves, it's been vetted for purity and performance. Trust the staff at Sportlander West to architect your specific protocol.</p>
+                <section class="expertise-section">
+                    <div class="section-header">
+                        <span class="accent-line"></span>
+                        <h2>Consultative Dominance</h2>
+                    </div>
+                    <p>We are not retail clerks. We are athletes, nutritionists, and optimization specialists. Every staff member at <strong>Sportlander West</strong> is trained to audit your current stack and architect a protocol that actually works. We don't sell bottles; we sell the physiological end-state.</p>
+                    <div class="expert-cta">
+                        <div class="expert-badge">Staffed by Local Athletes</div>
+                        <a href="tel:6612828840" class="btn btn-outline">Call for a Stack Audit</a>
+                    </div>
                 </section>
 
                 <section class="location-context">
@@ -294,12 +311,45 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Simple FAQ toggle for better AEO structure
-        document.querySelectorAll('.faq-trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                trigger.parentElement.classList.toggle('active');
+        // LIVE OPERATIONAL STATUS PROTOCOL
+        function updateStatus() {
+            const now = new Date();
+            const bakersfieldTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}));
+            const day = bakersfieldTime.getDay();
+            const hour = bakersfieldTime.getHours();
+            const statusPulse = document.querySelector('.status-pulse');
+            const statusText = document.querySelector('.status-text');
+
+            // Mon-Sat: 9AM - 8PM
+            if (day >= 1 && day <= 6 && hour >= 9 && hour < 20) {
+                statusPulse.style.background = '#00ff88';
+                statusPulse.style.boxShadow = '0 0 15px #00ff88';
+                statusText.innerHTML = 'Operational Now | Open until 8PM';
+            } else {
+                statusPulse.style.background = '#ff3e3e';
+                statusPulse.style.boxShadow = '0 0 15px #ff3e3e';
+                statusText.innerHTML = 'Maintenance Mode | Opens at 9AM';
+            }
+        }
+
+        // SCROLL REVEAL PROTOCOL
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('section, article, aside').forEach(el => {
+            el.classList.add('reveal-element');
+            observer.observe(el);
         });
+
+        // Initialize
+        updateStatus();
+        setInterval(updateStatus, 60000);
     </script>
 </body>
 </html>
