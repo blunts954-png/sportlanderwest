@@ -95,6 +95,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- INITIALIZATION PROTOCOL: THE ENTRANCE -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo-container">
+                <img src="logo.png" alt="Sportlander Logo" class="splash-logo">
+                <div class="logo-glow"></div>
+            </div>
+            <div class="loader-container">
+                <div class="protocol-text">INITIALIZING OPTIMIZATION PROTOCOL...</div>
+                <div class="loader-bar">
+                    <div class="loader-progress"></div>
+                </div>
+                <div class="access-text">ACCESS GRANTED</div>
+            </div>
+        </div>
+        <div class="scan-line"></div>
+    </div>
     
     <!-- NAVIGATION: CONTROL OVER THE FLOW -->
     <nav class="site-nav">
@@ -350,6 +367,15 @@
         // Initialize
         updateStatus();
         setInterval(updateStatus, 60000);
+
+        // SPLASH SCREEN DEACTIVATION
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                splash.classList.add('deactivate');
+                document.body.style.overflow = 'auto';
+            }, 3000); // 3 seconds of immersion
+        });
     </script>
 </body>
 </html>
